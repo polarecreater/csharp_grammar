@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 /*-----------------------------------------------------------------------------
- * Name: Q_Lotto
- * DESC: 자료구조 배열
- * 로또 번호 6자리 중복 없이 추출
- * 데이터 : int[] 번호;
+ * Name: ArrayList
+ * DESC: 자료구조 ArrayList
+ * 예시 코드
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
 {
@@ -17,34 +17,19 @@ namespace csharp_grammar
         //강의 코드
         static void Main(string[] args)
         {
-            Program test = new Program();
+            ArrayList list = new ArrayList();
+            list.Add("문자열");//0번 데이터
+            list.Add(100);//1번 데이터
+            list.Add(true);//2번 데이터
+            
+            list.Insert(2,200);//2번 위치에 데이터 추가, 원래 2번->3번
+            list.RemoveAt(1);//1변 데이터 삭제
+            list.Remove("문자열"); //"문자열"에 해당하는 값 삭제
+
+            for(int i = 0; i<list.Count; i++){//리스트 갯수만큼 반복
+                Console.WriteLine(list[i]);
+            }
         }
         
-        private int[] number;//클래스 변수 선언
-        public Program(){//생성자
-            GetNumber();//함수 실행
-        }
-        private void GetNumber(){
-            Random rnd = new Random();//랜덤 함수
-            number = new int[6];//함수 안에서 배열 초기화
-            int index = 0;
-            while(index<number.Length){
-                int temp = rnd.Next(1,46);
-                if(IsSameNumber(index, temp)){
-                    continue;//아래 코드 실행 건너뛰기 //true면 temp 다시 뽑음
-                }
-                number[index++] = temp;
-            }
-            for (int i = 0; i<number.Length; i++){//로또 번호 출력
-                Console.WriteLine(number[i]);
-            }
-        }
-        private bool IsSameNumber(int index, int temp){//중복 여부 확인
-            for (int i = 0; i<index; i++){
-                if(number[i] == temp)
-                    return true;
-            }
-            return false;
-        }
     }
 }
