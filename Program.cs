@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*-----------------------------------------------------------------------------
- * Name: List<T> 
- * DESC: 자료구조 List<T>
- * 예시 코드
+ * Name: SingleLinkedList
+ * DESC: 자료구조 SingleLinkedList
+ * Node.cs, SingleLinkedList.cs 사용
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
 {
@@ -17,23 +17,21 @@ namespace csharp_grammar
         //강의 코드
         static void Main(string[] args)
         {
-            List<int> list = new List<int>();
-            list.Add(1);
-            list.Add(4);
-            list.Add(7);
-            list.Add(5);
-                
-            list.Sort();//정렬
+            SingleLinkedList<int> list = new SingleLinkedList<int>();
+            list.AddLast(1);
+            list.AddLast(2);
+            list.AddLast(3);
+            list.AddLast(4);
 
-            for (int i = 0; i < list.Count; i++)//정방향 출력
-            {
-                Console.WriteLine(list[i]);
-            }
-            Console.WriteLine();
-            for (int i = list.Count -1; i >= 0 ; i--)//거꾸로 출력
-            {
-                Console.WriteLine(list[i]);
-            }
+            list.AddFirst(0);
+
+            Node<int> find = list.Find(3);//값 기준 찾기
+            Console.WriteLine(find.Data);//탐색한 노드의 값 출력
+
+            //list.AddAfter(find,10);
+            
+            list.Remove(find);
+            Console.WriteLine(list.ToString());//전체 데이터 출력
         }
         
     }
