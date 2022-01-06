@@ -14,12 +14,12 @@ namespace csharp_grammar
 {
     class Program
     {
-        /*
+        //강의 코드
         static void Main(string[] args)
         {
-            
-        }*/
-        //강의 코드
+            Program test = new Program();
+        }
+        
         private int[] number;//클래스 변수 선언
         public Program(){//생성자
             GetNumber();//함수 실행
