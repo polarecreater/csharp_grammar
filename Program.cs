@@ -17,21 +17,23 @@ namespace csharp_grammar
         //강의 코드
         static void Main(string[] args)
         {
-            List<string> list = new List<string>();
-            list.Add("a");
-            list.Add("b");
-            //list.Add(22);//데이터 타입이 맞지 않아 오류
-
-            list.Insert(1,"c");//삽입
-            list.Remove("a");//값 삭제
-            list.RemoveAt(1);//순서 삭제
-
-            for (int i = 0; i < list.Count; i++)
-            {   
-                Console.WriteLine(list[i]);//출력
+            List<int> list = new List<int>();
+            list.Add(1);
+            list.Add(4);
+            list.Add(7);
+            list.Add(5);
                 
-            }
+            list.Sort();//정렬
 
+            for (int i = 0; i < list.Count; i++)//정방향 출력
+            {
+                Console.WriteLine(list[i]);
+            }
+            Console.WriteLine();
+            for (int i = list.Count -1; i >= 0 ; i--)//거꾸로 출력
+            {
+                Console.WriteLine(list[i]);
+            }
         }
         
     }
