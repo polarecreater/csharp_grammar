@@ -17,21 +17,26 @@ namespace csharp_grammar
         //강의 코드
         static void Main(string[] args)
         {
-            SingleLinkedList<int> list = new SingleLinkedList<int>();
-            list.AddLast(1);
-            list.AddLast(2);
-            list.AddLast(3);
-            list.AddLast(4);
+           LinkedList<int> number = new LinkedList<int>();
+           number.AddFirst(10);
+           number.AddLast(20);
+           number.AddFirst(0);
+           number.AddLast(30);
 
-            list.AddFirst(0);
+           //노드 찾기
+           LinkedListNode<int> nodeTemp = number.Find(20);
 
-            Node<int> find = list.Find(3);//값 기준 찾기
-            Console.WriteLine(find.Data);//탐색한 노드의 값 출력
+           number.AddAfter(nodeTemp,25);
+           number.AddBefore(nodeTemp,15);
 
-            //list.AddAfter(find,10);
-            
-            list.Remove(find);
-            Console.WriteLine(list.ToString());//전체 데이터 출력
+           number.Remove(10);//값으로 삭제
+
+           //검색 후 출력
+           for (var node = number.First ; node != null ; node = node.Next)
+           {
+               Console.WriteLine(node.Value);
+           }
+           
         }
         
     }
