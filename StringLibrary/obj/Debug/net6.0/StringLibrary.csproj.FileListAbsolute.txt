@@ -1,0 +1,12 @@
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/bin/Debug/net6.0/StringLibrary.deps.json
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/bin/Debug/net6.0/StringLibrary.dll
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/bin/Debug/net6.0/ref/StringLibrary.dll
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/bin/Debug/net6.0/StringLibrary.pdb
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/obj/Debug/net6.0/StringLibrary.csproj.AssemblyReference.cache
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/obj/Debug/net6.0/StringLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/obj/Debug/net6.0/StringLibrary.AssemblyInfoInputs.cache
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/obj/Debug/net6.0/StringLibrary.AssemblyInfo.cs
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/obj/Debug/net6.0/StringLibrary.csproj.CoreCompileInputs.cache
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/obj/Debug/net6.0/StringLibrary.dll
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/obj/Debug/net6.0/ref/StringLibrary.dll
+/Users/kwonhyemin/Documents/csharp_grammar/StringLibrary/obj/Debug/net6.0/StringLibrary.pdb
