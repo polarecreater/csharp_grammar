@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 /*-----------------------------------------------------------------------------
  * Name: 복습
- * DESC: 자료구조 배열
+ * DESC: 자료구조 ArrayList
  * 
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
@@ -18,50 +18,21 @@ namespace csharp_grammar
         
         static void Main(string[] args)
         {
-            //배열
-            int[] _array = new int[10];
-            _array[1] = 2;
-            _array[2] = 2;
-            
-            //로또 문제
-            Random _rnd = new Random();
-            for (int i = _array.Length-1; i > 3; i--)
-            {
-                int temp = _rnd.Next(1,46);
-                //중복 제거
-                int j = 3;
-                while(j < _array.Length-1){
-                    j++;
-                    Console.WriteLine(j);
-                    if(temp == _array[j]){
-                        temp = _rnd.Next(1,46);
-                    }
-                }
-                _array[i] = temp;
-            }
-            
-            int _max = 0;//최댓값
-            int _min = 50;//최솟값
+            //생성
+            ArrayList _al = new ArrayList();
+            _al.Add("가족");
+            _al.Add(4);
+            _al.Add(-0);
+
+            _al.Remove(-0);
+
+            _al.Insert(2,"hope");
 
             //출력
-            for (int i = 0; i < _array.Length; i++)
-            {
-                if(_max<_array[i]){
-                    _max = _array[i];
-                }
-                else if(_min>_array[i]){
-                    _min = _array[i];
-                }
-                Console.Write(_array[i]);
-                Console.Write(" ");
-            }
-
-            Console.WriteLine("최댓값: "+_max+" , 최솟값: "+_min);
+            for(int i = 0; i<_al.Count; i++){
+                Console.Write(_al[i]);
+            }            
             
-            //결과 : 0 2 2 0 42 17 43 15 24 2 최댓값: 43 , 최솟값: 0
-            
-
-
         }
         
     }
