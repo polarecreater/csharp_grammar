@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*-----------------------------------------------------------------------------
- * Name: Stack
- * DESC: 자료구조 Stack
+ * Name: 복습
+ * DESC: 자료구조 배열
  * 
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
@@ -15,34 +15,43 @@ namespace csharp_grammar
     class Program
     {
         //강의 코드
+        
         static void Main(string[] args)
         {
-            //제네릭 타입이 아니어서 다양한 타입의 데이터 넣을 수 있음
-           Stack stack1 = new Stack();
-           stack1.Push("a");
-           stack1.Push(1);
-           stack1.Push(true);
-
-           while(stack1.Count > 0){
-               Console.WriteLine(stack1.Pop());
-           } 
-           stack1.Push("ArrayStack");
-            //효율 좋지 않아서 명시적 타입 지정 필요
-
-            //명시적 타입 지정한 스택
-            Stack<int> stack2 = new Stack<int>();
-            stack2.Push(1);
-            stack2.Push(2);
-            stack2.Pop();
-            stack2.Push(3);
-            stack2.Push(4);
-            stack2.Peek();
-            stack2.Push(5);
-
-            Console.WriteLine("stack2 갯수 "+stack2.Count);
-            while(stack2.Count>0){
-                Console.Write(stack2.Pop());
+            //배열
+            int[] _array = new int[10];
+            _array[1] = 2;
+            _array[2] = 2;
+            
+            //로또 문제
+            Random _rnd = new Random();
+            for (int i = _array.Length-1; i > 3; i--)
+            {
+                _array[i] = _rnd.Next(1,46);
             }
+            
+            int _max = 0;//최댓값
+            int _min = 50;//최솟값
+
+            //출력
+            for (int i = 0; i < _array.Length; i++)
+            {
+                if(_max<_array[i]){
+                    _max = _array[i];
+                }
+                else if(_min>_array[i]){
+                    _min = _array[i];
+                }
+                Console.Write(_array[i]);
+                Console.Write(" ");
+            }
+
+            Console.WriteLine("최댓값: "+_max+" , 최솟값: "+_min);
+            
+            //결과 : 0 2 2 0 42 17 43 15 24 2 최댓값: 43 , 최솟값: 0
+            
+
+
         }
         
     }
