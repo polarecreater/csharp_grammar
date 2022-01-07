@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*-----------------------------------------------------------------------------
- * Name: Hashtable, Dictionary<T>
- * DESC: 자료구조 Hashtable, Dictionary<T>
+ * Name: 선택 정렬
+ * DESC: 자료구조 선택 정렬
  * 
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
@@ -17,36 +17,45 @@ namespace csharp_grammar
         //강의 코드
         static void Main(string[] args)
         {
-            //해쉬 테이블
-            Hashtable hash = new Hashtable();
-            hash.Add(0, "하지");
-            hash.Add(1, "동지");
-            hash.Add(2, "소한");
-            hash.Add(3, "대한");
-            Console.WriteLine(hash[3]);//key를 인덱스처럼 사용 가능
-
-            //딕셔너리
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-            dic.Add("하지","001");
-            dic.Add("동지","002");
-            dic.Add("소한","003");
-            dic.Add("대한","004");
-
-            // //딕셔너리는 중복이 안됨
-            // dic.Add("하지","006");//넣어지지 않음
-
-            //키가 이미 있는지 확인
-            if(!dic.ContainsKey("경칩")){
-                dic.Add("경칩","005");
-            }
-
-            //삭제
-            dic.Remove("소한");
-            
-            foreach (var item in dic.Keys)//키 개수만큼 반복
+            //배열 출력
+            int[] data = {20,15,1,5,10};
+            Console.Write("시작값: ");
+            for (int i = 0; i < data.Length; i++)
             {
-                Console.WriteLine(item + ": " + dic[item]);
+                Console.Write(data[i] + ", ");
             }
+            Console.WriteLine();
+
+            //정렬
+            for (int i = 0; i < data.Length; i++)
+            {
+                int min = i;
+                //최솟값 찾기
+                for (int j = i+1; j < data.Length; j++)
+                {
+                    if(data[min]>data[j]){
+                        min = j;
+                    }
+                }
+                Swap(ref data[i],ref data[min]);//주소(레퍼런스) 값을 넘김
+            }
+            
+            //출력
+            Console.Write("정렬 값 : ");
+            for (int k = 0; k < data.Length; k++)
+            {
+                Console.Write(data[k]+ ", ");
+            }
+            Console.WriteLine();
+        }
+        //교환 함수 필요
+        static void Swap(ref int a, ref int b){
+            //ref : call by reference : 이 주소로 가서 실제 값을 바꿈
+            //ref가 없으면 이 내부에서만 값 변경이 되고 실제 배열에서 값이 변경되지 않음
+
+            int temp = a;
+            a = b;
+            b = temp;
         }
     }
 }
