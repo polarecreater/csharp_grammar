@@ -14,21 +14,26 @@ namespace csharp_grammar
 {
     class Program
     {
-        //강의 코드
         
         static void Main(string[] args)
         {
-            LinkedList<int> _dll = new LinkedList<int>();
-            _dll.AddFirst(8);
-            //LinkedListNode<int> _n = new LinkedListNode<int>(3);//이렇게 만든건 does not belong to current linkedlist 라고 에러난다.
-            _dll.AddLast(10);
-            _dll.AddLast(3);
-            LinkedListNode<int> temp = _dll.Find(10);
-            _dll.AddBefore(temp, 6);
-            Console.WriteLine(string.Join(",", _dll));
-            _dll.Remove(temp);
-            Console.WriteLine(string.Join(",", _dll));
-
+            Stack<int> _si = new Stack<int>();
+            _si.Push(22);
+            _si.Push(11);
+            _si.Push(33);
+            Console.WriteLine(_si.Peek());
+            _si.Pop();
+            Console.WriteLine(_si.Peek());
+            _si.Pop();
+            Console.WriteLine(_si.Peek());
+            _si.Push(99);
+            Console.WriteLine(string.Join(",", _si));
+            //결과값
+            // 33
+            // 11
+            // 22
+            // 99,22
+            
         }
         
     }
