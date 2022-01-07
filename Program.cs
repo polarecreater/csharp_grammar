@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*-----------------------------------------------------------------------------
- * Name: 버블 정렬
- * DESC: 자료구조 버블 정렬
+ * Name: 삽입 정렬
+ * DESC: 자료구조 삽입 정렬
  * 
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
@@ -17,31 +17,29 @@ namespace csharp_grammar
         //강의 코드
         static void Main(string[] args)
         {
-            //배열 출력
+            
             int[] data = {20,15,1,5,10};
             Console.Write("시작값: ");
             for (int i = 0; i < data.Length; i++)
             {
-                Console.Write(data[i] + ", ");
-            }
-            Console.WriteLine();
+                int key = i;
 
-            //정렬
-            for (int i = 0; i < data.Length; i++)//전체 순회
-            {
-                for (int j = 0; j < data.Length-1-i; j++)//비교
+                //앞에 있는 값과 비교
+                for (int j = i-1; j>=0; j--)
                 {
-                    if(data[j]>data[j+1]){
-                        Swap(ref data[j], ref data[j+1]);
+                    if(data[key] < data[j]){
+                        Swap(ref data[j], ref data[key]);
+                        key = j;
+                    }else{
+                        break;
                     }
-                    Console.Write((i+1) +"번째 정렬값 (" + j + ", " +(j+1) + "): ");
-                    //전체 출력
-                    for (int k = 0; k < data.Length; k++)
-                    {
-                        Console.Write(data[k].ToString() + ", ");
-                    }
-                    Console.WriteLine();
                 }
+                //출력해서 확인
+                for (int j = 0; j < data.Length; j++)
+                {
+                    Console.Write(data[j] + " , ");
+                }
+                Console.WriteLine();
             }
         }
         //교환 함수 필요
