@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 /*-----------------------------------------------------------------------------
  * Name: 복습
- * DESC: 자료구조 List<T>
+ * DESC: 자료구조 DoubleLinkedList
  * 
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
@@ -18,36 +18,16 @@ namespace csharp_grammar
         
         static void Main(string[] args)
         {
-            //생성
-            List<int> _gl = new List<int>();
-
-            _gl.Add(2);
-            _gl.Add(4);
-            _gl.Add(8);
-            _gl.RemoveAt(2);
-            _gl.Append(99);
-            int x = _gl.Max();
-            int m = _gl.Min();
-
-            //출력
-            for(int i = 0; i<_gl.Count; i++){
-                Console.Write(_gl[i] + " ");
-            }  
-
-            Console.WriteLine();
-
-            _gl.Sort();
-                      
-            for(int i = 0; i<_gl.Count; i++){
-                Console.Write(_gl[i]);
-            }  
-            Console.WriteLine(" max: "+ x + " , min: "+m);
-
-            // If you prefer, you can create a new list explicitly
-            List<int> newNumbers =_gl.Append(5).ToList();
-
-            // And then write to the console output
-            Console.WriteLine(string.Join(", ", newNumbers));//반복문 없이 출력 가능!
+            LinkedList<int> _dll = new LinkedList<int>();
+            _dll.AddFirst(8);
+            //LinkedListNode<int> _n = new LinkedListNode<int>(3);//이렇게 만든건 does not belong to current linkedlist 라고 에러난다.
+            _dll.AddLast(10);
+            _dll.AddLast(3);
+            LinkedListNode<int> temp = _dll.Find(10);
+            _dll.AddBefore(temp, 6);
+            Console.WriteLine(string.Join(",", _dll));
+            _dll.Remove(temp);
+            Console.WriteLine(string.Join(",", _dll));
 
         }
         
