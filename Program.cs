@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*-----------------------------------------------------------------------------
- * Name: 선택 정렬
- * DESC: 자료구조 선택 정렬
+ * Name: 버블 정렬
+ * DESC: 자료구조 버블 정렬
  * 
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
@@ -27,26 +27,22 @@ namespace csharp_grammar
             Console.WriteLine();
 
             //정렬
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < data.Length; i++)//전체 순회
             {
-                int min = i;
-                //최솟값 찾기
-                for (int j = i+1; j < data.Length; j++)
+                for (int j = 0; j < data.Length-1-i; j++)//비교
                 {
-                    if(data[min]>data[j]){
-                        min = j;
+                    if(data[j]>data[j+1]){
+                        Swap(ref data[j], ref data[j+1]);
                     }
+                    Console.Write((i+1) +"번째 정렬값 (" + j + ", " +(j+1) + "): ");
+                    //전체 출력
+                    for (int k = 0; k < data.Length; k++)
+                    {
+                        Console.Write(data[k].ToString() + ", ");
+                    }
+                    Console.WriteLine();
                 }
-                Swap(ref data[i],ref data[min]);//주소(레퍼런스) 값을 넘김
             }
-            
-            //출력
-            Console.Write("정렬 값 : ");
-            for (int k = 0; k < data.Length; k++)
-            {
-                Console.Write(data[k]+ ", ");
-            }
-            Console.WriteLine();
         }
         //교환 함수 필요
         static void Swap(ref int a, ref int b){
