@@ -27,7 +27,17 @@ namespace csharp_grammar
             Random _rnd = new Random();
             for (int i = _array.Length-1; i > 3; i--)
             {
-                _array[i] = _rnd.Next(1,46);
+                int temp = _rnd.Next(1,46);
+                //중복 제거
+                int j = 3;
+                while(j < _array.Length-1){
+                    j++;
+                    Console.WriteLine(j);
+                    if(temp == _array[j]){
+                        temp = _rnd.Next(1,46);
+                    }
+                }
+                _array[i] = temp;
             }
             
             int _max = 0;//최댓값
