@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 /*-----------------------------------------------------------------------------
- * Name: 재귀 호출 
- * DESC: 재귀 호출 강의 코드
+ * Name: 재귀 호출 피보나치
+ * DESC: 재귀 호출 피보나치 강의 코드
  * 
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
@@ -16,15 +16,14 @@ namespace csharp_grammar
         static void Main(string[] args)
         {
             int nValue = 10;
-            Console.WriteLine("Factorial "+ nValue + "-" + FuncFactorial(nValue));
+            Console.WriteLine("Fibonacci " + nValue + " - " + FuncFibonacci(nValue));
         }
-        static int FuncFactorial(int nNumber){
+        static int FuncFibonacci(int nSequence){
             int nResult = 0;
-            if(nNumber == 1){
+            if(nSequence == 1 || nSequence == 2){
                 nResult = 1;
-            }
-            else{
-                nResult = nNumber * FuncFactorial(nNumber -1);
+            }else{
+                nResult = FuncFibonacci(nSequence - 1) + FuncFibonacci(nSequence - 2);
             }
             return nResult;
         }
