@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 /*-----------------------------------------------------------------------------
  * Name: 퀵 정렬
- * DESC: 퀵 정렬 강의 코드
- * 
+ * DESC: 퀵 정렬 복습
+ * 맨 앞을 피봇으로 코드 변경
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
 {
@@ -45,11 +45,11 @@ namespace csharp_grammar
         static int FuncPartition(int nFirst, int nLast){
             int nLow, nHigh, nPivot;
 
-            //임의의 값 - 여기서는 마지막 값
-            nPivot = data[nLast];
+            //임의의 값 - 여기서는 첫번째 값
+            nPivot = data[nFirst];
 
-            nLow = nFirst;
-            nHigh = nLast - 1;
+            nLow = nFirst+1;
+            nHigh = nLast;
 
             Console.WriteLine("Low : " + data[nLow] + ", High : " + data[nHigh]);
             
@@ -68,7 +68,7 @@ namespace csharp_grammar
                 Console.WriteLine("Low : " + data[nLow] + ", High : " + data[nHigh]);
 
             }
-            Swap(data, nLow, nLast);//잘 모르겠다..?
+            Swap(data, nHigh, nFirst);
 
             Console.Write("정렬값 (Pivot : " + nPivot + ") : ");
             
@@ -81,7 +81,8 @@ namespace csharp_grammar
             }
             Console.WriteLine();
             Console.WriteLine();
-            return nLow;
+
+            return nHigh;
         }
         static void Swap(int[] nArrData, int nValue1, int nValue2){
             int nTemp = nArrData[nValue1];
