@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 /*-----------------------------------------------------------------------------
- * Name: ArrayStack 구현
- * DESC: 자료구조 스택 배열로 구현
+ * Name: 재귀 호출 
+ * DESC: 재귀 호출 강의 코드
  * 
 -----------------------------------------------------------------------------*/
 namespace csharp_grammar
@@ -15,17 +15,18 @@ namespace csharp_grammar
     {
         static void Main(string[] args)
         {
-            ArrayStack arrayStack = new ArrayStack(5);
-
-            arrayStack.Push(1);
-            arrayStack.Push(2);
-            arrayStack.Push(3);
-            arrayStack.Push(4);
-            arrayStack.Push(5);
-
-            while(arrayStack.Count>0){
-                Console.WriteLine(arrayStack.Pop());
+            int nValue = 10;
+            Console.WriteLine("Factorial "+ nValue + "-" + FuncFactorial(nValue));
+        }
+        static int FuncFactorial(int nNumber){
+            int nResult = 0;
+            if(nNumber == 1){
+                nResult = 1;
             }
+            else{
+                nResult = nNumber * FuncFactorial(nNumber -1);
+            }
+            return nResult;
         }
     }
 }
