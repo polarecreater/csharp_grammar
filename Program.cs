@@ -13,83 +13,75 @@ namespace csharp_grammar
 {
     class Program
     {
-        static int[] data = { 25, 15, 60, 45, 10, 20, 5, 30};
-
         static void Main(string[] args){
-            Console.Write("시작값 : ");
+            SortHeap();
+        }
+        
+        #region Heap sort
+        static void SortHeap(){
+            int[] data = {20, 35, 15, 5, 40, 10, 25,30};
 
+            Console.Write("시작값 : ");
             for (int i = 0; i < data.Length; i++)
             {
                 Console.Write(data[i].ToString() + ", ");
             }
             Console.WriteLine();
-            SortQuick(0, data.Length -1);
+
+            for (int i = (data.Length - 1)/2 ; i >= 0 ; --i)
+            {
+                CalcHeap(data, i, data.Length);
+            }
+            for(int i = data.Length -1; i>0; --i){
+                SwapHeap(ref data[i], ref data[0]);
+                CalcHeap(data, 0, i);
+
+                Console.Write("정렬값 : ");
+                for (int k = 0; k < data.Length; k++)
+                {
+                    Console.Write(data[k].ToString() + ", ");
+                }
+                Console.WriteLine();
+            }
+
             Console.Write("정렬값 : ");
-
-            for (int i = 0; i < data.Length; i++)
-            {
-                Console.Write(data[i].ToString() + ",");
+            for (int i = 0; i<data.Length; i++){
+                Console.Write(data[i].ToString() + ", ");
             }
             Console.WriteLine();
+
         }
-        static void SortQuick(int nFirst, int nLast){
-            
-            if (nFirst<nLast){
-                int pivotIndex = FuncPartition(nFirst, nLast);
-                
-                //분할
-                SortQuick(nFirst, pivotIndex - 1);
-                SortQuick(pivotIndex + 1, nLast);
-            }
+
+        static void SwapHeap(ref int nData1, ref int nData2){
+            int nTemp = nData1;
+            nData1 = nData2;
+            nData2 = nTemp;
         }
-        static int FuncPartition(int nFirst, int nLast){
-            int nLow, nHigh, nPivot;
+ 
+        static void CalcHeap(int[] data, int nRoot, int nMax){
+            while(nRoot<nMax){
+                //왼쪽 자식 노드
+                int nChild = nRoot * 2 +1;
 
-            //임의의 값 - 여기서는 첫번째 값
-            nPivot = data[nFirst];
-
-            nLow = nFirst+1;
-            nHigh = nLast;
-
-            Console.WriteLine("Low : " + data[nLow] + ", High : " + data[nHigh]);
-            
-            while(nLow <= nHigh){
-                while (data[nLow] < nPivot){
-                    nLow++;
-                    Console.WriteLine("Low Change : "+data[nLow]);
+                //오른쪽 자식 노드가 더 크면 오른쪽 선택
+                if(nChild + 1 < nMax && data[nChild] < data[nChild+1]){
+                    ++nChild;
                 }
-                while (data[nHigh] > nPivot){
-                    nHigh--;
-                    Console.WriteLine("High Change : "+data[nHigh]);
-                }
-                if(nLow <= nHigh){
-                    Swap(data, nLow, nHigh);
-                }
-                Console.WriteLine("Low : " + data[nLow] + ", High : " + data[nHigh]);
+                if(nChild<nMax && data[nRoot] <data[nChild]){
+                    SwapHeap(ref data[nRoot], ref data[nChild]);
+                    nRoot = nChild;
 
-            }
-            Swap(data, nHigh, nFirst);
-
-            Console.Write("정렬값 (Pivot : " + nPivot + ") : ");
-            
-            for (int i = 0; i < data.Length; i++)
-            {
-                if(nPivot == data[i])
-                    Console.Write("*" + data[i] + "*, ");
+                    Console.Write("정렬값 : ");
+                    for(int k = 0; k<data.Length; k++){
+                        Console.Write(data[k].ToString() + ", ");
+                    }
+                    Console.WriteLine();
+                }
                 else
-                    Console.Write(data[i] + ", ");
+                    break;
             }
-            Console.WriteLine();
-            Console.WriteLine();
-
-            return nHigh;
+            #endregion Heap sort
         }
-        static void Swap(int[] nArrData, int nValue1, int nValue2){
-            int nTemp = nArrData[nValue1];
-            nArrData[nValue1] = nArrData[nValue2];
-            nArrData[nValue2] = nTemp;
 
-            Console.WriteLine("Swap : " + nArrData[nValue1]+" , "+ nArrData[nValue2]);
-        }
     }
 }
